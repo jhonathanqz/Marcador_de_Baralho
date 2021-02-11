@@ -8,39 +8,49 @@ void main() {
 }
 
 class HomeJogador extends StatelessWidget {
-  TextEditingController _controllerNome1 = TextEditingController();
-  TextEditingController _controllerNome2 = TextEditingController();
+  static TextEditingController controllerNome1 = TextEditingController();
+  static TextEditingController controllerNome2 = TextEditingController();
+
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Novo Jogo"),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: Container(
+        color: Colors.grey[200],
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(12),
         child: ListView(
           children: [
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Container(
+              child: Text("Digite logo a baixo o nome dos jogadores por favor:", style: TextStyle(
+                  fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold
+                ),
+                textAlign: TextAlign.justify,)
+            ),),
+            SizedBox(
+              height: 20,
+            ),
             Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           
           children: [
-            Padding(padding: EdgeInsets.all(8),
-            child: Row(
-              children: [
-                Text("Digite logo a baixo o nome dos jogadores por favor:", style: TextStyle(
-                  fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold
-                ),
-                textAlign: TextAlign.justify,)
-              ],
-            ),),
+            
             Center(
               child: TextField(
-                      controller: _controllerNome1,
+                      controller: controllerNome1,
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.person,
@@ -63,7 +73,7 @@ class HomeJogador extends StatelessWidget {
             SizedBox(height: 15,),
             Center(
               child: TextField(
-                      controller: _controllerNome2,
+                      controller: controllerNome2,
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.person,
@@ -84,17 +94,33 @@ class HomeJogador extends StatelessWidget {
                     ),
             ),
             SizedBox(height: 20,),
-            RaisedButton(
+            Row(
+              children: [
+                Expanded(
+                  child: RaisedButton(
+              color: Colors.blue,
               onPressed: () {
-                Home.Jogador1 = _controllerNome1;
-                Home.Jogador2 = _controllerNome2;
-                Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Home()));
+                if (controllerNome1.text != '' && controllerNome2.text != '') {
+                  Home.jogador1 = controllerNome1;
+                  Home.jogador2 = controllerNome2;
+                  Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Home()));
+                }else {
+                  _onFail();
+                }
+
+                
               },
-              child: Text("Enviar"),
+              child: Text("Entrar", style: TextStyle(
+                fontSize: 16, color: Colors.black
+              ),),
             )
+                )
+              ],    
+            ),
+            
           ],
         ),
           ],
@@ -103,13 +129,24 @@ class HomeJogador extends StatelessWidget {
       
     );
   }
+    void _onFail(){
+    _scaffoldKey.currentState.showSnackBar(
+      SnackBar(content: Text("Existe campos em branco, verifique!", style: TextStyle(
+          color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold
+      ),),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 8),
+      ),
+    );
+  }
 }
 
 
 
 class Home extends StatefulWidget {
-  static TextEditingController Jogador1;
-  static TextEditingController Jogador2;
+  static TextEditingController jogador1;
+  static TextEditingController jogador2;
+
 
   @override
   _HomeState createState() => _HomeState();
@@ -117,8 +154,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String Jogador1;
-  String Jogador2;
+
+  
+  String jogador1 = HomeJogador.controllerNome1.text;
+  String jogador2 = HomeJogador.controllerNome2.text;
   
 
   int _timeum = 0;
@@ -143,7 +182,11 @@ class _HomeState extends State<Home> {
         ;
       } else if(_timeum >= 12){
         _infoText = "Parabéns, vocês ganharam o Jogo!!!";
+        _infoTexto = "Vocês perderam!";
+
       
+      }else if (_timedois >= 12) {
+        _infoText = "Por favor, inicie um novo Jogo!";
       }
       else {
         _infoText = "Parabéns, vocês ganharam o Jogo!!!";
@@ -164,10 +207,14 @@ class _HomeState extends State<Home> {
       }else if(_timedois == 11){
         _infoTexto = "Mão de 11. Boa Sorte!";
       }else if(_timedois >= 12){
-        print(_timedois);
         _infoTexto = "Parabéns, vocês ganharam o Jogo!!!";
+        _infoText = "Vocês perderam!";
 
-      }else {
+      }else if (_timeum >= 12){
+        _infoTexto = "Por favor, inicie um novo jogo!";
+      }
+      
+      else {
         _infoTexto = "Parabéns, vocês ganharam o Jogo!!!";
       }
 
@@ -224,10 +271,36 @@ class _HomeState extends State<Home> {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+                children: [
+                  Padding(
+                  padding: EdgeInsets.only(left: 10, top: 35),
+                  child: Expanded(
+                    child: Container(
+                    height: 40.0,
+                    
+                    child: RaisedButton(
+                      onPressed: () {
+                        HomeJogador.controllerNome1.text = '';
+                        HomeJogador.controllerNome2.text = '';
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => HomeJogador()));
+                        },
+
+                      child: Text(
+                        "Nova Partida",
+                        style: TextStyle(color: Colors.white, fontSize: 25.0),
+                      ),
+                      color: Colors.blue,
+                    ),
+                  ),
+                  )
+                ),
                 Padding(
-                  padding: EdgeInsets.only(left: 10, top: 30),
-                  child: Container(
+                  padding: EdgeInsets.only(left: 10, top: 35),
+                  child: Expanded(
+                    child: Container(
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
@@ -243,9 +316,17 @@ class _HomeState extends State<Home> {
                       color: Colors.blue,
                     ),
                   ),
+                  )
                 ),
+                ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                
                 Padding(
-                  padding: EdgeInsets.only(left: 35, top: 30),
+                  padding: EdgeInsets.only(left: 35, top: 30, right: 25),
                   child: Container(
                     color: Colors.transparent,
                     height: 40.0,
@@ -270,7 +351,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center ,
           children: <Widget>[
             Text(
-              "${Jogador1}: $_timeum",
+              "$jogador1: $_timeum",
               style:
               TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
             ),
@@ -283,12 +364,14 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-
-                        if(_timeum >= 0 && _timeum <= 13) {
+                        
+                          if(_timeum >= 0 && _timeum <= 11 && _timedois < 12) {
                           _changeTimeum(1);
                           _a = (1);
                           _b = (0);
-                        }else {
+                        }
+                        
+                        if(_timedois >= 12){
                           _infoText = "Por favor, inicie um novo Jogo!";
                         };
                       },
@@ -307,7 +390,7 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-                        if (_timeum >= 1 && _timeum <= 13){
+                        if (_timeum >= 1 && _timeum <= 13 && _timedois < 12){
                           _changeTimeum(-1);
                           _a = (-1);
                           _b = (0);
@@ -329,7 +412,7 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-                        if (_timeum >= 0 && _timeum <=13) {
+                        if (_timeum >= 0 && _timeum <=11 && _timedois < 12) {
                         _changeTimeum(3);
                         _a = (3);
                         _b = (0);
@@ -363,7 +446,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Text(
-              "Eles: $_timedois",
+              "$jogador2: $_timedois",
               style:
               TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
             ),
@@ -376,7 +459,7 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-                        if (_timedois >=0 && _timedois <=13) {
+                        if (_timedois >=0 && _timedois <=11 && _timeum < 12) {
                         _changeTimedois(1);
                         _a = (0);
                         _b = (1);
@@ -398,7 +481,7 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-                        if (_timedois >= 1 && _timedois <= 13) {
+                        if (_timedois >= 1 && _timedois <= 13 && _timeum < 12) {
                         _changeTimedois(-1);
                         _a = (0);
                         _b = (-1);
@@ -420,7 +503,7 @@ class _HomeState extends State<Home> {
                     height: 40.0,
                     child: RaisedButton(
                       onPressed: () {
-                        if (_timedois >=0 && _timedois <= 13) {
+                        if (_timedois >=0 && _timedois <= 11 && _timeum < 12) {
                         _changeTimedois(3);
                         _a = (0);
                         _b = (3);
@@ -454,4 +537,5 @@ class _HomeState extends State<Home> {
     );
 
   }
+
 }
