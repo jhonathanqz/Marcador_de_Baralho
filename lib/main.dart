@@ -106,7 +106,8 @@ class _HomeState extends State<Home> {
           Image.asset(
             "images/f7.jpg",
             fit: BoxFit.cover,
-            height: 1000.0,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
           ),
           SafeArea(
             child: Column(
@@ -134,7 +135,7 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 "Nova Partida",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0),
+                                    color: Colors.white, fontSize: 18.0),
                               ),
                               color: Colors.blue,
                             ),
@@ -160,7 +161,7 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 "Novo Jogo",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0),
+                                    color: Colors.white, fontSize: 18.0),
                               ),
                               color: Colors.blue,
                             ),
@@ -171,6 +172,23 @@ class _HomeState extends State<Home> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 0, left: 0, right: 25, bottom: 0),
+                      child: FlatButton(
+                        onPressed: () {
+                          _reverse();
+                          _mensagemTime1();
+                          _mensagemTime2();
+                        },
+                        child: Text(
+                          "from:JhonathanQz",
+                          style: TextStyle(
+                              color: Colors.grey[900],
+                              fontStyle: FontStyle.italic,
+                              fontSize: 15.0),
+                        ),
+                      ),
+                    ),
                     Padding(
                         padding: EdgeInsets.only(left: 20, top: 15, right: 20),
                         child: Expanded(
@@ -196,7 +214,7 @@ class _HomeState extends State<Home> {
                                   Text(
                                     "Desfazer",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20.0),
+                                        color: Colors.white, fontSize: 18.0),
                                   ),
                                 ],
                               ),
@@ -204,28 +222,6 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         )),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, left: 10, right: 5),
-                      child: FlatButton(
-                        onPressed: () {
-                          _reverse();
-                          _mensagemTime1();
-                          _mensagemTime2();
-                        },
-                        child: Text(
-                          "from:JhonathanQz",
-                          style: TextStyle(
-                              color: Colors.grey[900],
-                              fontStyle: FontStyle.italic,
-                              fontSize: 15.0),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ],
@@ -247,7 +243,7 @@ class _HomeState extends State<Home> {
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
-                    
+                    decoration: TextDecoration.underline,
                   ),
               ),
               Row(
@@ -273,7 +269,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Text(
                           "+1",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -290,11 +286,12 @@ class _HomeState extends State<Home> {
                             _a = (-1);
                             _b = (0);
                             _mensagemTime1();
+                            _mensagemTime2();
                           }
                         },
                         child: Text(
                           "-1",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -315,7 +312,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Text(
                           "Truco!",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -329,7 +326,7 @@ class _HomeState extends State<Home> {
                     color: Colors.yellowAccent,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
-                    fontSize: 27.0),
+                    fontSize: 25.0),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -349,7 +346,9 @@ class _HomeState extends State<Home> {
                 style: TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
-                    fontSize: 35),
+                    fontSize: 35, 
+                    decoration: TextDecoration.underline,
+                    ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -372,7 +371,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Text(
                           "+1",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -390,13 +389,13 @@ class _HomeState extends State<Home> {
                             _changeTimedois(-1);
                             _a = (0);
                             _b = (-1);
-
+                            _mensagemTime1();
                             _mensagemTime2();
                           }
                         },
                         child: Text(
                           "-1",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -420,7 +419,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Text(
                           "Truco!",
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                          style: TextStyle(color: Colors.white, fontSize: 22.0),
                         ),
                         color: Colors.blue,
                       ),
@@ -436,7 +435,7 @@ class _HomeState extends State<Home> {
                       color: Colors.yellowAccent,
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.bold,
-                      fontSize: 27.0),
+                      fontSize: 25.0),
                   textAlign: TextAlign.center,
                 ),
               ),
