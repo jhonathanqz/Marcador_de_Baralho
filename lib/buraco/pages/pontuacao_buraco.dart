@@ -41,6 +41,7 @@ class PontuacaoBuraco extends StatelessWidget {
                                 ijBuracoStore.time1Venceu == true ||
                                         ijBuracoStore.time2Venceu == true
                                     ? showWinner(context)
+                                    // ignore: unnecessary_statements
                                     : null;
                               } else {
                                 _onFailForm();
@@ -76,6 +77,7 @@ class PontuacaoBuraco extends StatelessWidget {
   }
 
   void _onFailForm() {
+    // ignore: deprecated_member_use
     _scaffoldKey.currentState.showSnackBar(
       SnackBar(
         content: Text(
@@ -90,6 +92,7 @@ class PontuacaoBuraco extends StatelessWidget {
   }
 
   void showWinner(context) {
+    // ignore: invalid_use_of_protected_member
     _scaffoldKey.currentState.setState(() {
       showDialog(
         context: context,

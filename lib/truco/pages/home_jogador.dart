@@ -255,6 +255,7 @@ class HomeJogador extends StatelessWidget {
   }
 
   void _onFail() {
+    // ignore: deprecated_member_use
     _scaffoldKey.currentState.showSnackBar(
       SnackBar(
         content: Text(
