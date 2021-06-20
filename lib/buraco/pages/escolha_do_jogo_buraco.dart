@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marcador_de_truco/buraco/mobx/buraco.store.dart';
+import 'package:marcador_de_truco/buraco/pages/jogadores_buraco.dart';
 import 'package:marcador_de_truco/escolha_marcador.dart';
 import 'package:marcador_de_truco/injection_container.dart';
 import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
-import 'package:marcador_de_truco/truco/pages/home_jogador.dart';
 import 'package:marcador_de_truco/widgets/card_options.dart';
 
-class EscolhaDoJogoTruco extends StatelessWidget {
-  final ij = sl<TrucoStore>();
+class EscolhaDoJogoBuraco extends StatelessWidget {
+  final ijTrucoStore = sl<TrucoStore>();
+  final ijBuracoStore = sl<BuracoStore>();
   @override
   Widget build(BuildContext context) {
     deleteFiels();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Marcador de Truco'),
+        title: Text('Marcador de Buraco'),
         centerTitle: true,
         backgroundColor: Colors.blue[700],
         leading: IconButton(
           onPressed: () {
+            ijBuracoStore.clearFieldsBuraco();
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (context) => EscolhaMarcador()),
                 (Route<dynamic> route) => false);
@@ -54,32 +56,79 @@ class EscolhaDoJogoTruco extends StatelessWidget {
                     mainAxisSpacing: 16,
                     children: <Widget>[
                       CardOptionsWidget(
-                          imageDirectory: 'images/2personsBlack.png',
+                          imageDirectory: 'images/2persons.png',
                           titleService: '2 Jogadores',
                           subTitleService: '(1 x 1)',
                           icon: FontAwesomeIcons.userFriends,
                           colorBackground: Colors.blue[700],
                           function: () {
-                            ij.forPlayers = false;
+                            ijBuracoStore.players2Buraco = true;
+                            ijBuracoStore.players4Buraco = false;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        HomeJogador()));
+                                        JogadoresBuraco()));
                           }),
                       CardOptionsWidget(
-                          imageDirectory: 'images/4personsBlack.png',
+                          imageDirectory: 'images/4persons.png',
                           titleService: '4 Jogadores',
                           subTitleService: '(2 x 2)',
                           icon: FontAwesomeIcons.users,
                           colorBackground: Colors.blue[700],
                           function: () {
-                            ij.forPlayers = true;
+                            ijBuracoStore.players4Buraco = true;
+                            ijBuracoStore.variosPlayers = true;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        HomeJogador()));
+                                        JogadoresBuraco()));
+                          }),
+                      CardOptionsWidget(
+                          imageDirectory: 'images/6persons2.png',
+                          titleService: '6 Jogadores',
+                          subTitleService: '(3 x 3)',
+                          icon: FontAwesomeIcons.users,
+                          colorBackground: Colors.blue[700],
+                          function: () {
+                            ijBuracoStore.players6Buraco = true;
+                            ijBuracoStore.variosPlayers = true;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        JogadoresBuraco()));
+                          }),
+                      CardOptionsWidget(
+                          imageDirectory: 'images/8persons2.png',
+                          titleService: '8 Jogadores',
+                          subTitleService: '(4 x 4)',
+                          icon: FontAwesomeIcons.users,
+                          colorBackground: Colors.blue[700],
+                          function: () {
+                            ijBuracoStore.players8Buraco = true;
+                            ijBuracoStore.variosPlayers = true;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        JogadoresBuraco()));
+                          }),
+                      CardOptionsWidget(
+                          imageDirectory: 'images/10persons.png',
+                          titleService: '10 Jogadores',
+                          subTitleService: '(5 x 5)',
+                          icon: FontAwesomeIcons.users,
+                          colorBackground: Colors.blue[700],
+                          function: () {
+                            ijBuracoStore.players10Buraco = true;
+                            ijBuracoStore.variosPlayers = true;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        JogadoresBuraco()));
                           }),
                       CardOptionsWidget(
                           imageDirectory: 'images/sair1.png',
@@ -106,7 +155,7 @@ class EscolhaDoJogoTruco extends StatelessWidget {
   }
 
   void deleteFiels() {
-    ij.deleteAll();
-    print('todos os campos apagados com sucesso!');
+    ijBuracoStore.clearFieldsBuraco();
+    print('******todos os campos apagados com sucesso!');
   }
 }

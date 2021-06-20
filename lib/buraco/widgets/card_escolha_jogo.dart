@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class CardOptionsWidget extends StatelessWidget {
+class CardEscolhaJogo extends StatelessWidget {
   final String titleService;
   final String subTitleService;
   final IconData icon;
   final Function function;
   final Color colorBackground;
-  final String imageDirectory;
+  final String directoryImage;
 
-  CardOptionsWidget({
+  CardEscolhaJogo({
     this.titleService,
     this.subTitleService,
     this.icon,
     this.colorBackground,
     this.function,
-    this.imageDirectory,
+    this.directoryImage,
   });
 
   @override
@@ -33,9 +33,11 @@ class CardOptionsWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: 80,
-              child: Image.asset(imageDirectory, fit: BoxFit.contain,),
-            ),
+                height: 80,
+                child: Image.asset(
+                  directoryImage,
+                  fit: BoxFit.contain,
+                )),
             SizedBox(height: 10),
             Container(
               child: Text(
@@ -47,8 +49,14 @@ class CardOptionsWidget extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 5),
-              child: Text(subTitleService),
+              padding: EdgeInsets.symmetric(vertical: 0),
+              child: Text(
+                subTitleService,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
             )
           ],
         ),

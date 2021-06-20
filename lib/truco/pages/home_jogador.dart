@@ -263,7 +263,7 @@ class HomeJogador extends StatelessWidget {
               color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red,
-        duration: Duration(seconds: 8),
+        duration: Duration(seconds: 4),
       ),
     );
   }
