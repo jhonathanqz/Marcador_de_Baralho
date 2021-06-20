@@ -94,8 +94,5 @@ abstract class TrucoBase with Store {
     nameJogador3 = '';
     nameJogador4 = '';
     forPlayers = false;
-    forPlayers = false;
-    forPlayers = false;
-    forPlayers = false;
   }
 }
