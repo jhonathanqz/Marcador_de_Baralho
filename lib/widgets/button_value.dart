@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ButtonValue extends StatelessWidget {
-  String title;
-  Function onPress;
+  final String title;
+  final Function onPress;
   ButtonValue({this.title, this.onPress});
   @override
   Widget build(BuildContext context) {

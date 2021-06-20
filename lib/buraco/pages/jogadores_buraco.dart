@@ -13,7 +13,6 @@ import 'package:marcador_de_truco/buraco/form/time_um/form_8_players.dart';
 import 'package:marcador_de_truco/buraco/mobx/buraco.store.dart';
 import 'package:marcador_de_truco/buraco/pages/jogo_buraco.dart';
 import 'package:marcador_de_truco/injection_container.dart';
-import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
 
 class JogadoresBuraco extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -239,6 +238,7 @@ class JogadoresBuraco extends StatelessWidget {
   }
 
   void _onFail() {
+    // ignore: deprecated_member_use
     _scaffoldKey.currentState.showSnackBar(
       SnackBar(
         content: Text(
