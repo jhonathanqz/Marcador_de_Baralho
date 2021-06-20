@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marcador_de_truco/escolha_do_jogo.dart';
+import 'package:marcador_de_truco/truco/pages/escolha_do_jogo_truco.dart';
 
 import 'injection_container.dart' as di;
 
@@ -7,7 +7,7 @@ void main() async{
   await di.init();
   runApp(new MaterialApp(
     title: "Marcador de Truco", 
-    home: EscolhaDoJogo(),
+    home: EscolhaDoJogoTruco(),
     debugShowCheckedModeBanner: false,));
 }
 

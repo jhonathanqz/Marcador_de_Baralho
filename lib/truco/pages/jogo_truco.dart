@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:marcador_de_truco/escolha_do_jogo.dart';
-import 'package:marcador_de_truco/home_jogador.dart';
 import 'package:marcador_de_truco/injection_container.dart';
-import 'package:marcador_de_truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/pages/escolha_do_jogo_truco.dart';
 import 'package:marcador_de_truco/widgets/button_value.dart';
 
 class HomeJogo extends StatefulWidget {
-  static TextEditingController jogador1;
-  static TextEditingController jogador2;
+
   @override
   _HomeJogoState createState() => _HomeJogoState();
 }
 
 class _HomeJogoState extends State<HomeJogo> {
-  String jogador1 = HomeJogador.controllerNome1.text;
-  String jogador2 = HomeJogador.controllerNome2.text;
+
   final ij = sl<TrucoStore>();
 
   void _changeTimeum(int delta) {
@@ -33,7 +30,6 @@ class _HomeJogoState extends State<HomeJogo> {
         ij.messageTime1 = "Bom jogo!";
       } else if (ij.time1 == 11) {
         ij.messageTime1 = "Mão de 11. Boa Sorte!";
-        ;
       } else if (ij.time1 >= 12) {
         ij.messageTime1 = "Parabéns, vocês ganharam o Jogo!!!";
         ij.messageTime2 = "Vocês perderam!";
@@ -70,15 +66,6 @@ class _HomeJogoState extends State<HomeJogo> {
     });
   }
 
-  void _changeNovojogo(int delta) {
-    setState(() {
-      ij.messageTime1 = "Novo Jogo!";
-      ij.messageTime2 = "Novo Jogo!";
-      ij.time1 = 0;
-      ij.time2 = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,12 +95,10 @@ class _HomeJogoState extends State<HomeJogo> {
                               width: 150,
                               child: RaisedButton(
                                 onPressed: () {
-                                  HomeJogador.controllerNome1.text = '';
-                                  HomeJogador.controllerNome2.text = '';
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              EscolhaDoJogo()),
+                                              EscolhaDoJogoTruco()),
                                       (Route<dynamic> route) => false);
                                 },
                                 child: Text(

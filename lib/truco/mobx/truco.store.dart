@@ -1,6 +1,6 @@
 
 import 'package:mobx/mobx.dart';
-import '../string_extension.dart';
+import '../../string_extension.dart';
 part 'truco.store.g.dart';
 
 class TrucoStore = TrucoBase with _$TrucoStore;

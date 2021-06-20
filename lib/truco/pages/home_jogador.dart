@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marcador_de_truco/Jogo.dart';
 import 'package:marcador_de_truco/injection_container.dart';
-import 'package:marcador_de_truco/mobx/truco.store.dart';
-import 'string_extension.dart';
+import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/pages/jogo_truco.dart';
 
 class HomeJogador extends StatelessWidget {
-  static TextEditingController controllerNome1 = TextEditingController();
-  static TextEditingController controllerNome2 = TextEditingController();
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final ij = sl<TrucoStore>();

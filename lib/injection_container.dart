@@ -1,7 +1,7 @@
 
 
 import 'package:get_it/get_it.dart';
-import 'package:marcador_de_truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
 
 final GetIt sl = GetIt.instance;
 

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:marcador_de_truco/home_jogador.dart';
 import 'package:marcador_de_truco/injection_container.dart';
-import 'package:marcador_de_truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/mobx/truco.store.dart';
+import 'package:marcador_de_truco/truco/pages/home_jogador.dart';
 import 'package:marcador_de_truco/widgets/card_options.dart';
 
-class EscolhaDoJogo extends StatelessWidget {
+class EscolhaDoJogoTruco extends StatelessWidget {
   final ij = sl<TrucoStore>();
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class EscolhaDoJogo extends StatelessWidget {
                             titleService: 'Sair do jogo',
                             subTitleService: '(Sair do App)',
                             icon: FontAwesomeIcons.signOutAlt,
-                            colorBackground: Color(0xFFeae6e2),
+                            colorBackground: Colors.grey,
                             function: () {
                               deleteFiels();
                               SystemNavigator.pop();
