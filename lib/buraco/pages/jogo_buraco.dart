@@ -88,6 +88,7 @@ class _JogoBuracoState extends State<JogoBuraco> {
                   if (ijBuracoStore.time1Venceu == false &&
                       ijBuracoStore.time2Venceu == false) {
                     showNovaPontuacao(context);
+                    //showWinner();
                   } else {
                     showWinner();
                   } //showWinner();

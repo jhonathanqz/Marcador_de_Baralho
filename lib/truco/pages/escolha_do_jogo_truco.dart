@@ -35,7 +35,7 @@ class EscolhaDoJogoTruco extends StatelessWidget {
                 padding:
                     EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
                 child: Text(
-                  'Por favor, selecione logo a baixo a quantidade jogadores:',
+                  'Por favor, selecione logo a baixo a quantidade de jogadores:',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,

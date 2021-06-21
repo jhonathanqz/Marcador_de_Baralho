@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AlertNovaPontuacao extends StatelessWidget {
+class AlertNovoJogoTruco extends StatelessWidget {
   final Function function;
-  AlertNovaPontuacao({this.function});
+  AlertNovoJogoTruco({this.function});
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -31,7 +31,7 @@ class AlertNovaPontuacao extends StatelessWidget {
                 Center(
                   child: Container(
                     height: 90,
-                    child: Image.asset('images/numbers3_2.png', fit: BoxFit.contain,),
+                    child: Image.asset('images/start_22.png', fit: BoxFit.contain,),
                   ),
                 ),
                 Container(
@@ -39,7 +39,7 @@ class AlertNovaPontuacao extends StatelessWidget {
                     child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                          text: 'Deseja registrar uma nova pontuação?',
+                          text: 'Você deseja realmente começar um novo jogo?',
                           style: TextStyle(
                               color: Colors.grey[900],
                               fontSize: 21,
@@ -47,7 +47,7 @@ class AlertNovaPontuacao extends StatelessWidget {
                           children: <TextSpan>[
                             TextSpan(
                               text:
-                                  '\n\nApós confirmação, você será redirecionado para tela de registro dos pontos!',
+                                  '\n\nApós confirmação, os pontos da partida atual serão zerados!',
                               style: TextStyle(
                                   color: Colors.grey[900],
                                   fontSize: 15,
@@ -66,16 +66,16 @@ class AlertNovaPontuacao extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
-              color: Colors.green[700],
+              color: Colors.yellow[700],
             ),
             child: Material(
               borderRadius: BorderRadius.circular(10.0),
-              color: Colors.green[700],
+              color: Colors.yellow[700],
               child: Center(
-                child: Text('Registrar novos pontos!',
+                child: Text('Novo Jogo!',
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w900,
                         fontSize: 20)),
               ),
             ),

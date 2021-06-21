@@ -55,7 +55,9 @@ class CardTime2 extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                    height: 60, child: Image.asset('images/cartas1.png')),
+                    height: 60, child: Image.asset(ijBuracoStore.time2Venceu == true
+                        ? 'images/trofeu1.png'
+                        : 'images/cartas1.png')),
               ),
               SizedBox(
                 height: 10,

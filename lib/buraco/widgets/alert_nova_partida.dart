@@ -29,11 +29,11 @@ class AlertNovaPartida extends StatelessWidget {
             child: Column(
               children: [
                 Center(
-                    child: Icon(
-                  Icons.circle,
-                  color: Colors.red[700],
-                  size: 50,
-                )),
+                  child: Container(
+                    height: 80,
+                    child: Image.asset('images/restart2_2.png', fit: BoxFit.contain,),
+                  ),
+                ),
                 Container(
                     padding: EdgeInsets.only(top: 30),
                     child: RichText(
