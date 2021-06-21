@@ -29,11 +29,11 @@ class AlertNovoJogo extends StatelessWidget {
             child: Column(
               children: [
                 Center(
-                    child: Icon(
-                  Icons.circle,
-                  color: Colors.yellow[700],
-                  size: 50,
-                )),
+                  child: Container(
+                    height: 90,
+                    child: Image.asset('images/start_22.png', fit: BoxFit.contain,),
+                  ),
+                ),
                 Container(
                     padding: EdgeInsets.only(top: 30),
                     child: RichText(

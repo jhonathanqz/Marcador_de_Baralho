@@ -13,7 +13,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
   final ijBuracoStore = sl<BuracoStore>();
   @override
   Widget build(BuildContext context) {
-    deleteFiels();
+    deleteFields();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -38,7 +38,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                 padding:
                     EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
                 child: Text(
-                  'Por favor, selecione logo a baixo a quantidade jogadores:',
+                  'Por favor, selecione logo a baixo a quantidade de jogadores:',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
@@ -62,8 +62,8 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.userFriends,
                           colorBackground: Colors.blue[700],
                           function: () {
+                            ijBuracoStore.clearFieldsBuraco();
                             ijBuracoStore.players2Buraco = true;
-                            ijBuracoStore.players4Buraco = false;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -77,6 +77,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.users,
                           colorBackground: Colors.blue[700],
                           function: () {
+                            ijBuracoStore.clearFieldsBuraco();
                             ijBuracoStore.players4Buraco = true;
                             ijBuracoStore.variosPlayers = true;
                             Navigator.push(
@@ -92,6 +93,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.users,
                           colorBackground: Colors.blue[700],
                           function: () {
+                            ijBuracoStore.clearFieldsBuraco();
                             ijBuracoStore.players6Buraco = true;
                             ijBuracoStore.variosPlayers = true;
                             Navigator.push(
@@ -107,6 +109,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.users,
                           colorBackground: Colors.blue[700],
                           function: () {
+                            ijBuracoStore.clearFieldsBuraco();
                             ijBuracoStore.players8Buraco = true;
                             ijBuracoStore.variosPlayers = true;
                             Navigator.push(
@@ -122,6 +125,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.users,
                           colorBackground: Colors.blue[700],
                           function: () {
+                            ijBuracoStore.clearFieldsBuraco();
                             ijBuracoStore.players10Buraco = true;
                             ijBuracoStore.variosPlayers = true;
                             Navigator.push(
@@ -137,7 +141,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
                           icon: FontAwesomeIcons.signOutAlt,
                           colorBackground: Colors.grey,
                           function: () {
-                            deleteFiels();
+                            deleteFields();
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                     builder: (context) => EscolhaMarcador()),
@@ -154,7 +158,7 @@ class EscolhaDoJogoBuraco extends StatelessWidget {
     );
   }
 
-  void deleteFiels() {
+  void deleteFields() {
     ijBuracoStore.clearFieldsBuraco();
     print('******todos os campos apagados com sucesso!');
   }

@@ -55,7 +55,10 @@ class CardTime1 extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                    height: 60, child: Image.asset('images/cartas1.png')),
+                    height: 60,
+                    child: Image.asset(ijBuracoStore.time1Venceu == true
+                        ? 'images/trofeu1.png'
+                        : 'images/cartas1.png')),
               ),
               SizedBox(
                 height: 10,
@@ -68,46 +71,50 @@ class CardTime1 extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w900),
                         children: <TextSpan>[
-                          ijBuracoStore.players2Buraco == true ?
-                          TextSpan(
-                            text:
-                                '${ijBuracoStore.nameJogador1Buraco}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ): TextSpan(),
-                          ijBuracoStore.players4Buraco == true ?
-                          TextSpan(
-                            text:
-                                '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ) : TextSpan(),
-                          ijBuracoStore.players6Buraco == true ?
-                          TextSpan(
-                            text:
-                                '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ) : TextSpan(),
-                          ijBuracoStore.players8Buraco == true ?
-                          TextSpan(
-                            text:
-                                '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco} ${'| ' + ijBuracoStore.nameJogador4Buraco}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ) : TextSpan(),
-                          ijBuracoStore.players10Buraco == true ?
-                          TextSpan(
-                            text:
-                                '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco} ${'| ' + ijBuracoStore.nameJogador4Buraco} ${'| ' + ijBuracoStore.nameJogador5Buraco}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ) : TextSpan()
+                          ijBuracoStore.players2Buraco == true
+                              ? TextSpan(
+                                  text: '${ijBuracoStore.nameJogador1Buraco}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              : TextSpan(),
+                          ijBuracoStore.players4Buraco == true
+                              ? TextSpan(
+                                  text:
+                                      '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              : TextSpan(),
+                          ijBuracoStore.players6Buraco == true
+                              ? TextSpan(
+                                  text:
+                                      '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              : TextSpan(),
+                          ijBuracoStore.players8Buraco == true
+                              ? TextSpan(
+                                  text:
+                                      '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco} ${'| ' + ijBuracoStore.nameJogador4Buraco}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              : TextSpan(),
+                          ijBuracoStore.players10Buraco == true
+                              ? TextSpan(
+                                  text:
+                                      '${ijBuracoStore.nameJogador1Buraco} ${'| ' + ijBuracoStore.nameJogador2Buraco} ${'| ' + ijBuracoStore.nameJogador3Buraco} ${'| ' + ijBuracoStore.nameJogador4Buraco} ${'| ' + ijBuracoStore.nameJogador5Buraco}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              : TextSpan()
                         ]),
                   )),
             ],
