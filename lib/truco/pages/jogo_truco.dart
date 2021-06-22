@@ -92,7 +92,7 @@ class _HomeJogoState extends State<HomeJogo> {
                         children: [
                           Padding(
                               padding:
-                                  EdgeInsets.only(left: 20, top: 40, right: 20),
+                                  EdgeInsets.only(left: 20, top: 25, right: 20),
                               child: Container(
                                 height: 40.0,
                                 width: 150,
@@ -223,9 +223,9 @@ class _HomeJogoState extends State<HomeJogo> {
                   Text(
                     "${ij.time1}",
                     style: TextStyle(
-                      color: Colors.red,
+                      color: Colors.redAccent[700],
                       fontWeight: FontWeight.bold,
-                      fontSize: 35,
+                      fontSize: 45,
                       decoration: TextDecoration.underline,
                     ),
                   ),
@@ -279,11 +279,11 @@ class _HomeJogoState extends State<HomeJogo> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
+                    padding: const EdgeInsets.only(bottom: 45),
                     child: Text(
                       ij.messageTime1,
                       style: TextStyle(
-                          color: Colors.red[800],
+                          color: Colors.redAccent[700],
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 25.0),
@@ -337,9 +337,9 @@ class _HomeJogoState extends State<HomeJogo> {
                   Text(
                     "${ij.time2}",
                     style: TextStyle(
-                      color: Colors.red,
+                      color: Colors.redAccent[700],
                       fontWeight: FontWeight.bold,
-                      fontSize: 35,
+                      fontSize: 45,
                       decoration: TextDecoration.underline,
                     ),
                   ),
@@ -391,11 +391,11 @@ class _HomeJogoState extends State<HomeJogo> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 40),
+                    padding: EdgeInsets.only(bottom: 25),
                     child: Text(
                       ij.messageTime2,
                       style: TextStyle(
-                          color: Colors.red[700],
+                          color: Colors.redAccent[700],
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 25.0),
