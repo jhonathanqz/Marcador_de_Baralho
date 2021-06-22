@@ -35,7 +35,7 @@ class AlertWinner extends StatelessWidget {
                   children: [
                     Center(
                       child: Container(
-                        height: 150,
+                        height: 130,
                         child: Image.asset(
                           'images/trofeu1.png',
                           fit: BoxFit.contain,
@@ -43,13 +43,13 @@ class AlertWinner extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        padding: EdgeInsets.only(top: 30),
+                        padding: EdgeInsets.only(top: 20),
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               text: ijBuracoStore.time1Venceu == true
-                                  ? 'Parabéns Time 1 Venceu!!!'
-                                  : 'Parabéns Time 2 Venceu!!!',
+                                  ? 'Parabéns \nTime 1 Venceu!!!'
+                                  : 'Parabéns \nTime 2 Venceu!!!',
                               style: TextStyle(
                                   color: Colors.grey[900],
                                   fontSize: 21,
@@ -57,12 +57,21 @@ class AlertWinner extends StatelessWidget {
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ijBuracoStore.time1Venceu == true
-                                      ? '\n\nA pontuação final \nfoi de: ${ijBuracoStore.pontosTime1}'
-                                      : '\n\nA pontuação final \nfoi de: ${ijBuracoStore.pontosTime2}',
+                                      ? '\n\nA pontuação final \nfoi de: '
+                                      : '\n\nA pontuação final \nfoi de: ',
                                   style: TextStyle(
                                       color: Colors.grey[900],
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400),
+                                ),
+                                TextSpan(
+                                  text: ijBuracoStore.time1Venceu == true
+                                      ? '${ijBuracoStore.pontosTime1}'
+                                      : '${ijBuracoStore.pontosTime2}',
+                                  style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w900),
                                 ),
                               ]),
                         )),
@@ -72,7 +81,7 @@ class AlertWinner extends StatelessWidget {
             ],
           ),
           content: Container(
-            height: 110,
+            height: 95,
             child: Column(
               children: [
                 GestureDetector(
@@ -81,7 +90,7 @@ class AlertWinner extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Container(
-                      height: 50,
+                      height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         color: Colors.yellow[700],
@@ -99,7 +108,7 @@ class AlertWinner extends StatelessWidget {
                       ),
                     )),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 TextButton(
                   onPressed: () {
