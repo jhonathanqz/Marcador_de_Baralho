@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:marcador_de_truco/buraco/form/form_pontuacao/form_pontuacao.dart';
 import 'package:marcador_de_truco/buraco/mobx/buraco.store.dart';
-import 'package:marcador_de_truco/buraco/pages/jogo_buraco.dart';
+import 'package:marcador_de_truco/buraco/pages/pontuacao_resume_buraco.dart';
 import 'package:marcador_de_truco/buraco/widgets/alert_winner.dart';
 import 'package:marcador_de_truco/injection_container.dart';
 
@@ -33,16 +33,12 @@ class PontuacaoBuraco extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (ijBuracoStore.isFormPontuacaoValid) {
-                                ijBuracoStore.finalizarPontuacao();
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => JogoBuraco()),
-                                    (Route<dynamic> route) => false);
-                                ijBuracoStore.time1Venceu == true ||
-                                        ijBuracoStore.time2Venceu == true
-                                    ? showWinner(context)
-                                    // ignore: unnecessary_statements
-                                    : null;
+                                   ijBuracoStore.calcularRodada();
+                                   Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        PontuacaoResumeBuraco()));
                               } else {
                                 _onFailForm();
                               }
@@ -81,11 +77,11 @@ class PontuacaoBuraco extends StatelessWidget {
     _scaffoldKey.currentState.showSnackBar(
       SnackBar(
         content: Text(
-          "Existe campos em branco, verifique!",
+          "Existe campos em branco, por favor verifique!",
           style: TextStyle(
               color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.redAccent[700],
         duration: Duration(seconds: 3),
       ),
     );
