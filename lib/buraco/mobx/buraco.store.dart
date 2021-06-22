@@ -183,6 +183,10 @@ abstract class BuracoBase with Store {
     statusPegouMortoTime1No = false;
     statusPegouMortoTime2Yes = false;
     statusPegouMortoTime2No = false;
+    pontosRodadaTime1 = 0;
+    pontosRodadaTime2 = 0;
+    time1Venceu = false;
+    time2Venceu = false;
     print('***Limpei todos os campos do buraco');
   }
 
@@ -210,6 +214,8 @@ abstract class BuracoBase with Store {
     statusPegouMortoTime2No = false;
     time1Venceu = false;
     time2Venceu = false;
+    pontosRodadaTime1 = 0;
+    pontosRodadaTime2 = 0;
     print('**Limpei os campos da tela de nova pontuação');
   }
 
@@ -219,6 +225,9 @@ abstract class BuracoBase with Store {
     pontosTime2 = 0;
     time1Venceu = false;
     time2Venceu = false;
+    pontosRodadaTime1 = 0;
+    pontosRodadaTime2 = 0;
+    print('Limpei a pontuação para novo jogo!');
   }
 
   @observable
@@ -459,8 +468,10 @@ abstract class BuracoBase with Store {
       canastraSujaTime2 != '' &&
       pontuacaoCartasTime2 != '' &&
       pontuacaoNegativaTime2 != '' &&
-      (bateTime1 == true || bateTime2 == true) &&
-      (pegouMortoTime1 == true || pegouMortoTime2 == true);
+      (statusBateTime1Yes == true || statusBateTime1No == true) &&
+      (statusBateTime2Yes == true || statusBateTime2No == true) &&
+      (statusPegouMortoTime1Yes == true || statusPegouMortoTime1No == true) &&
+      (statusPegouMortoTime2Yes == true || statusPegouMortoTime2No == true);
 
   @action
   void finalizarPontuacao() {
@@ -475,8 +486,6 @@ abstract class BuracoBase with Store {
     int canastraSuja2 = int.tryParse(canastraSujaTime2);
     int cartas2 = int.tryParse(pontuacaoCartasTime2);
     int negativo2 = int.tryParse(pontuacaoNegativaTime2);
-
-    print('valor canastra limpa time 1 $canastraLimpa1');
 
     if (bateTime1 == true) {
       pontosTime1 =
@@ -516,5 +525,33 @@ abstract class BuracoBase with Store {
       time2Venceu = true;
       time1Venceu = false;
     }
+  }
+
+  @observable
+  int pontosRodadaTime1 = 0;
+
+  @observable
+  int pontosRodadaTime2 = 0;
+
+  @action
+  void calcularRodada(){
+    int canastraLimpa1 = int.tryParse(canastraLimpaTime1);
+    int canastraSuja1 = int.tryParse(canastraSujaTime1);
+    int cartas1 = int.tryParse(pontuacaoCartasTime1);
+    int negativo1 = int.tryParse(pontuacaoNegativaTime1);
+    int bateu1 = bateTime1 == true ? 100 : 0;
+    int pegouMorto1 = pegouMortoTime1 == true ? 0 : 100;
+    //************************************************** */
+    // pontuação time 2 //
+    //************************************************** */
+    int canastraLimpa2 = int.tryParse(canastraLimpaTime2);
+    int canastraSuja2 = int.tryParse(canastraSujaTime2);
+    int cartas2 = int.tryParse(pontuacaoCartasTime2);
+    int negativo2 = int.tryParse(pontuacaoNegativaTime2);
+    int bateu2 = bateTime2 == true ? 100 : 0;
+    int pegouMorto2 = pegouMortoTime2 == true ? 0 : 100;
+
+    pontosRodadaTime1 = (canastraLimpa1 + canastraSuja1 + cartas1 + bateu1) - (pegouMorto1 + negativo1);
+    pontosRodadaTime2 = (canastraLimpa2 + canastraSuja2 + cartas2 + bateu2) - (pegouMorto2 + negativo2);
   }
 }

@@ -669,6 +669,36 @@ mixin _$BuracoStore on BuracoBase, Store {
     });
   }
 
+  final _$pontosRodadaTime1Atom = Atom(name: 'BuracoBase.pontosRodadaTime1');
+
+  @override
+  int get pontosRodadaTime1 {
+    _$pontosRodadaTime1Atom.reportRead();
+    return super.pontosRodadaTime1;
+  }
+
+  @override
+  set pontosRodadaTime1(int value) {
+    _$pontosRodadaTime1Atom.reportWrite(value, super.pontosRodadaTime1, () {
+      super.pontosRodadaTime1 = value;
+    });
+  }
+
+  final _$pontosRodadaTime2Atom = Atom(name: 'BuracoBase.pontosRodadaTime2');
+
+  @override
+  int get pontosRodadaTime2 {
+    _$pontosRodadaTime2Atom.reportRead();
+    return super.pontosRodadaTime2;
+  }
+
+  @override
+  set pontosRodadaTime2(int value) {
+    _$pontosRodadaTime2Atom.reportWrite(value, super.pontosRodadaTime2, () {
+      super.pontosRodadaTime2 = value;
+    });
+  }
+
   final _$BuracoBaseActionController = ActionController(name: 'BuracoBase');
 
   @override
@@ -1002,6 +1032,17 @@ mixin _$BuracoStore on BuracoBase, Store {
   }
 
   @override
+  void calcularRodada() {
+    final _$actionInfo = _$BuracoBaseActionController.startAction(
+        name: 'BuracoBase.calcularRodada');
+    try {
+      return super.calcularRodada();
+    } finally {
+      _$BuracoBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 pontosTime1: ${pontosTime1},
@@ -1044,6 +1085,8 @@ statusPegouMortoTime2Yes: ${statusPegouMortoTime2Yes},
 statusPegouMortoTime2No: ${statusPegouMortoTime2No},
 time1Venceu: ${time1Venceu},
 time2Venceu: ${time2Venceu},
+pontosRodadaTime1: ${pontosRodadaTime1},
+pontosRodadaTime2: ${pontosRodadaTime2},
 isPlayersValid: ${isPlayersValid},
 isForPlayersValid: ${isForPlayersValid},
 is6PlayersValid: ${is6PlayersValid},
