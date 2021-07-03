@@ -17,6 +17,13 @@ O projeto Marcador de Baralho, consiste em um aplicativo para fazer a marcação
 <br><br>
 Marcador de Buraco não é fácil de achar e como jogamos bastante em família/amigos, decidi criar um marcador que permitisse esse gerenciamento de pontos e jogadores.
 
+## 📱 Screenshots
+<div>
+  <img src="https://github.com/jhonathanqz/Marcador_de_Baralho/blob/master/screenshots/home1.jpg" width="600px" style="max-width:100%;" alt="imagem do projeto">
+  <img src="https://github.com/jhonathanqz/Marcador_de_Baralho/blob/master/screenshots/home2.jpg" width="600px" style="max-width:100%;" alt="imagem do projeto">
+  <img src="https://github.com/jhonathanqz/Marcador_de_Baralho/blob/master/screenshots/home3.jpg" width="600px" style="max-width:100%;" alt="imagem do projeto">
+</div>
+
 ## ▶️ Como executar
 
 - Clone o repositório
