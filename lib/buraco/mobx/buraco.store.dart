@@ -486,17 +486,19 @@ abstract class BuracoBase with Store {
     int canastraSuja2 = int.tryParse(canastraSujaTime2);
     int cartas2 = int.tryParse(pontuacaoCartasTime2);
     int negativo2 = int.tryParse(pontuacaoNegativaTime2);
+    int morto = 100;
+    int bate = 100;
 
     if (bateTime1 == true) {
       pontosTime1 =
-          (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1 + 100) -
+          (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1 + bate) -
               (negativo1);
       if (pegouMortoTime2 == true) {
         pontosTime2 = (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2) -
             negativo2;
       } else if (pegouMortoTime2 == false) {
         pontosTime2 = (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2) -
-            (negativo2 + 100);
+            (negativo2 + morto);
       }
     } else if (bateTime2 == true &&
         bateTime1 == false &&
@@ -505,17 +507,37 @@ abstract class BuracoBase with Store {
           (negativo1);
 
       pontosTime2 =
-          (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2 + 100) -
+          (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2 + bate) -
               (negativo2);
     } else if (bateTime2 == true &&
         bateTime1 == false &&
         pegouMortoTime1 == false) {
       pontosTime1 = (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1) -
-          (negativo1 + 100);
+          (negativo1 + morto);
 
       pontosTime2 =
-          (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2 + 100) -
+          (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2 + bate) -
               (negativo2);
+    } else if (bateTime1 == false && bateTime2 == false) {
+      if (pegouMortoTime1 == true && pegouMortoTime2 == true) {
+        pontosTime1 = (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1) -
+            (negativo1);
+
+        pontosTime2 = (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2) -
+            (negativo2);
+      } else if (pegouMortoTime1 == false && pegouMortoTime2 == true) {
+        pontosTime1 = (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1) -
+            (negativo1 + morto);
+
+        pontosTime2 = (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2) -
+            (negativo2);
+      } else if (pegouMortoTime2 == false && pegouMortoTime1 == true) {
+        pontosTime1 = (pontosTime1 + canastraLimpa1 + canastraSuja1 + cartas1) -
+            (negativo1);
+
+        pontosTime2 = (pontosTime2 + canastraLimpa2 + canastraSuja2 + cartas2) -
+            (negativo2 + morto);
+      }
     }
 
     if (pontosTime1 >= 3000 && pontosTime1 > pontosTime2) {
@@ -534,7 +556,7 @@ abstract class BuracoBase with Store {
   int pontosRodadaTime2 = 0;
 
   @action
-  void calcularRodada(){
+  void calcularRodada() {
     int canastraLimpa1 = int.tryParse(canastraLimpaTime1);
     int canastraSuja1 = int.tryParse(canastraSujaTime1);
     int cartas1 = int.tryParse(pontuacaoCartasTime1);
@@ -551,7 +573,9 @@ abstract class BuracoBase with Store {
     int bateu2 = bateTime2 == true ? 100 : 0;
     int pegouMorto2 = pegouMortoTime2 == true ? 0 : 100;
 
-    pontosRodadaTime1 = (canastraLimpa1 + canastraSuja1 + cartas1 + bateu1) - (pegouMorto1 + negativo1);
-    pontosRodadaTime2 = (canastraLimpa2 + canastraSuja2 + cartas2 + bateu2) - (pegouMorto2 + negativo2);
+    pontosRodadaTime1 = (canastraLimpa1 + canastraSuja1 + cartas1 + bateu1) -
+        (pegouMorto1 + negativo1);
+    pontosRodadaTime2 = (canastraLimpa2 + canastraSuja2 + cartas2 + bateu2) -
+        (pegouMorto2 + negativo2);
   }
 }
